@@ -1,38 +1,92 @@
-.App {
+body {
+  background-color: rgb(10, 10, 36);
+  height: 1000px;
+  margin: 0;
+}
+
+.boss {
+  background-color: rgb(255, 255, 255);
+  width: 400px;
+  height: 700px;
+  border-radius: 40px;
+  margin: 0 auto;
+}
+.zag {
+  margin-left: 40px;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.week {
+  display: flex;
+  flex-direction: column;
+}
+
+/*weekblock*/
+.day {
+  margin: 0 auto;
+  background-color: rgb(243, 238, 231);
+  width: 320px;
+  margin-top: 10px;
+  border-radius: 15px;
+  font-size: 25px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.adr {
+  text-decoration: none;
+  color: black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/*target*/
+.target {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.target_elem {
+  margin: 0 auto;
+  background-color: rgb(243, 238, 231);
+  width: 320px;
+  margin-top: 10px;
+  border-radius: 15px;
+  font-size: 25px;
+  text-align: center;
+}
+
+.target_inp {
+  width: 320px;
+  height: 30px;
+  font-size: 20px;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-left: 40px;
+}
+
+.btn_inp {
+  width: 100px;
+  margin-left: 260px;
+  border-radius: 10px;
+}
+
+.btn_inp:hover {
+  background-color: rgb(237, 216, 216);
+}
+
+.btn_back {
+  width: 200px;
+  height: 35px;
+  margin-left: 180px;
+  border-radius: 10px;
+  background-color: rgb(10, 10, 36);
   color: white;
+  font-size: 18px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn_back:hover {
+  background-color: rgb(216, 216, 226);
+  color: rgb(10, 10, 36);
 }
