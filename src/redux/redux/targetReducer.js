@@ -67,7 +67,11 @@ const targetReducer = (state = initialize, action) => {
   switch (action.type) {
     case SET_NAME_TARGET:
       return produce(state, (draft) => {
-        draft.items[action.id][action.child].name = action.text;
+        draft.items[action.id].map((elem) => {
+          if (elem.id === action.child) {
+            elem.name = action.text;
+          }
+        });
       });
     case ADD_TARGET:
       let lengthTarget = state.items[action.id].length;
@@ -88,7 +92,11 @@ const targetReducer = (state = initialize, action) => {
 
     case TOGGLE_FLAG:
       return produce(state, (draft) => {
-        draft.items[action.id][action.child].flag = action.flag;
+        draft.items[action.id].map((elem) => {
+          if (elem.id === action.child) {
+            elem.flag = action.flag;
+          }
+        });
       });
 
     case DELETE_TARGET:
