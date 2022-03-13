@@ -115,7 +115,7 @@ const targetReducer = (state = initialize, action) => {
           lengthOb += 1;
         }
       });
-      res = (420 / 100) * Math.trunc(num / (lengthOb / 100));
+      res = (320 / 100) * Math.trunc(num / (lengthOb / 100));
       return produce(state, (draft) => {
         draft.days[action.id].procent = res;
       });
