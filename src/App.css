@@ -51,9 +51,10 @@ body {
   margin: 0 auto;
   background-color: rgb(243, 238, 231);
   width: 320px;
-  margin-top: 10px;
+  height: 40px;
+
   border-radius: 15px;
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
 }
 
@@ -64,6 +65,9 @@ body {
   border-radius: 10px;
   margin-top: 10px;
   margin-left: 40px;
+}
+.container_text_flag {
+  display: flex;
 }
 
 .btn_inp {
@@ -79,14 +83,70 @@ body {
 .btn_back {
   width: 200px;
   height: 35px;
-  margin-left: 180px;
+
   border-radius: 10px;
   background-color: rgb(10, 10, 36);
   color: white;
   font-size: 18px;
 }
 
-.btn_back:hover {
+.btn_back:hover,
+.btn_new_target:hover {
   background-color: rgb(216, 216, 226);
   color: rgb(10, 10, 36);
+}
+/* 
+add_new_target">
+          <button className="btn_new_target */
+.for_btn_tr {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.btn_new_target {
+  width: 140px;
+  height: 35px;
+  border-radius: 10px;
+  background-color: rgb(10, 10, 36);
+  color: white;
+  font-size: 18px;
+}
+
+.check {
+  display: flex;
+  flex-direction: row;
+}
+
+.in_check {
+  margin-top: 23px;
+}
+
+.p_target {
+  margin-top: 10px;
+}
+
+.check_cont {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.check_false,
+.check_true {
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+}
+
+.btn_delete {
+  border-radius: 10px;
+  margin-left: 5px;
+  background-color: rgb(10, 10, 36);
+  color: white;
+}
+
+.btn_delete:hover {
+  background-color: rgb(238, 54, 54);
+  color: white;
+  border: 0px;
 }

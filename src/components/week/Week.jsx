@@ -4,8 +4,9 @@ import WeekBlock from './WeekBlock';
 
 const Week = () => {
   const items = useSelector((state) => state.week.items);
-  const days = items.map((name, index) => {
-    return <WeekBlock name={name} key={index} id={index} />;
+
+  const days = items.map((obj, index) => {
+    return <WeekBlock name={obj.name} key={index} id={obj.id} />;
   });
 
   return <div className="week">{days}</div>;
