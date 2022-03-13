@@ -1,5 +1,6 @@
 import produce from 'immer';
 
+const SET_PROCENT = 'SET_PROCENT';
 const SET_NAME_TARGET = 'SET_NAME_TARGET';
 const ADD_TARGET = 'ADD_TARGET';
 const TOGGLE_FLAG = 'TOGGLE_FLAG';
@@ -8,27 +9,44 @@ const SET_COUNT = 'SET_COUNT';
 const initialize = {
   items: [
     [
-      { name: '0zadacha1', flag: false, id: 0 },
-      { name: '0zadacha2', flag: false, id: 1 },
-      { name: '0zadacha3', flag: false, id: 2 },
+      { name: 'Задача', flag: false, id: 0 },
+      { name: 'Задача', flag: false, id: 0 },
     ],
     [
-      { name: '1asdas', flag: false, id: 0 },
-      { name: '1qqqqq', flag: false, id: 1 },
+      { name: 'Задача', flag: false, id: 0 },
+      { name: 'Задача', flag: false, id: 0 },
     ],
     [
-      { name: '2asdas', flag: false, id: 0 },
-      { name: '2qqqqq', flag: false, id: 1 },
+      { name: 'Задача', flag: false, id: 0 },
+      { name: 'Задача', flag: false, id: 0 },
     ],
     [
-      { name: '3asdas', flag: false, id: 0 },
-      { name: '3qqqqq', flag: false, id: 1 },
+      { name: 'Задача', flag: false, id: 0 },
+      { name: 'Задача', flag: false, id: 0 },
     ],
-    [],
-    [],
-    [],
+    [
+      { name: 'Задача', flag: false, id: 0 },
+      { name: 'Задача', flag: false, id: 0 },
+    ],
+    [
+      { name: 'Задача', flag: false, id: 0 },
+      { name: 'Задача', flag: false, id: 0 },
+    ],
+    [
+      { name: 'Задача', flag: false, id: 0 },
+      { name: 'Задача', flag: false, id: 0 },
+    ],
   ],
-  count: null,
+  days: [
+    { name: 'Понедельник', id: 0, procent: null },
+    { name: 'Вторник', id: 1, procent: null },
+    { name: 'Среда', id: 2, procent: null },
+    { name: 'Четверг', id: 3, procent: null },
+    { name: 'Пятница', id: 4, procent: null },
+    { name: 'Суббота', id: 5, procent: null },
+    { name: 'Воскресенье', id: 6, procent: null },
+  ],
+  fetch: false,
 };
 
 const _get = (obj, path) => {
@@ -52,7 +70,14 @@ const targetReducer = (state = initialize, action) => {
         draft.items[action.id][action.child].name = action.text;
       });
     case ADD_TARGET:
-      const lengthTarget = state.items[action.id].length;
+      let lengthTarget = state.items[action.id].length;
+
+      if (lengthTarget >= 6) {
+        return {
+          ...state,
+          fetch: true,
+        };
+      }
       return produce(state, (draft) => {
         draft.items[action.id].push({
           name: 'новая задача',
@@ -67,18 +92,38 @@ const targetReducer = (state = initialize, action) => {
       });
 
     case DELETE_TARGET:
-      return produce(state, (draft) => {});
+      return produce(state, (draft) => {
+        draft.items[action.id].splice(action.child, action.child + 1);
+      });
 
     case SET_COUNT:
       return {
         ...state,
         count: getTotalSum(state.items, 'flag'),
       };
+
+    case SET_PROCENT:
+      let num = 0;
+      let lengthOb = 0;
+      let res = 0;
+      state.items[action.id].map((elem) => {
+        if (elem.flag == true) {
+          num += 1;
+          lengthOb += 1;
+        } else {
+          lengthOb += 1;
+        }
+      });
+      res = (320 / 100) * Math.trunc(num / (lengthOb / 100));
+      return produce(state, (draft) => {
+        draft.days[action.id].procent = res;
+      });
     default:
       return state;
   }
 };
 
+export const setProcent = (id) => ({ type: SET_PROCENT, id });
 export const deleteElementTarget = (id, child) => ({ type: DELETE_TARGET, id, child });
 export const addTarget = (id) => ({ type: ADD_TARGET, id });
 export const setTargetName = (text, id, child) => ({ type: SET_NAME_TARGET, text, id, child });

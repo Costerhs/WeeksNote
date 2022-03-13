@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setTargetName } from './../../redux/redux/targetReducer';
@@ -17,9 +18,11 @@ const TargetsItems = ({ name, id, child, checks, onToggle, onDelete }) => {
   const toggleCheck = () => {
     onToggle(!checks, id, child);
   };
+
   const deleteTarget = () => {
     onDelete(id, child);
   };
+  const just = () => {};
   return (
     <div className="container">
       {flag && (
@@ -32,7 +35,12 @@ const TargetsItems = ({ name, id, child, checks, onToggle, onDelete }) => {
       )}
       <div className="container_text_flag">
         <div onClick={newText} className="target_elem">
-          <p className={'p_target'}>{name}</p>
+          <p
+            className={classNames('p_target', {
+              active: checks === true,
+            })}>
+            {name}
+          </p>
         </div>
         <div className="check">
           <div className="check_cont">
@@ -43,8 +51,10 @@ const TargetsItems = ({ name, id, child, checks, onToggle, onDelete }) => {
             </div>
             <div className="check_true">
               <p className="text_check">Выполнено</p>
+
               <input
                 onClick={toggleCheck}
+                onChange={just}
                 className="in_check"
                 checked={checks}
                 type={'checkbox'}

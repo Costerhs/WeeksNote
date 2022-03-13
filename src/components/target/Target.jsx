@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { NavLink, useMatch } from 'react-router-dom';
 import { addTarget, deleteElementTarget, toggleFlag } from '../../redux/redux/targetReducer';
+import { setProcent } from '../../redux/redux/targetReducer';
 import TargetsItems from './TargetsItems';
 
 const Target = () => {
   const add = useMatch('/targets/:name');
   const namead = add.params.name;
-
+  const fetch = useSelector((state) => state.target.fetch);
   const name = useSelector((state) => state.target.items);
   //dispatch
   const dispatch = useDispatch();
@@ -20,6 +21,10 @@ const Target = () => {
   };
   const toggleFlagCheck = (cheks, id, child) => {
     dispatch(toggleFlag(cheks, id, child));
+  };
+
+  const func = () => {
+    dispatch(setProcent(namead));
   };
   const tgs = name[namead].map((obj, index) => {
     return (
@@ -46,11 +51,12 @@ const Target = () => {
           </button>
         </div>
         <div className="back">
-          <NavLink to={'/'}>
+          <NavLink onClick={func} to={'/'}>
             <button className="btn_back">Вернуться</button>
           </NavLink>
         </div>
       </div>
+      {fetch && <p className="error_text">Превышен лимит задач!Не перетруждайтесь</p>}
     </div>
   );
 };

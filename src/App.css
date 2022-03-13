@@ -26,6 +26,9 @@ body {
 }
 
 /*weekblock*/
+.boss_block {
+  width: 370px;
+}
 .day {
   margin: 0 auto;
   background-color: rgb(243, 238, 231);
@@ -39,6 +42,18 @@ body {
 .adr {
   text-decoration: none;
   color: black;
+}
+
+.back_color {
+  background-color: aqua;
+  opacity: 0.7;
+  z-index: 1;
+  position: absolute;
+
+  margin-top: 25px;
+  margin-left: 24px;
+  height: 33px;
+  border-radius: 15px;
 }
 
 /*target*/
@@ -123,6 +138,7 @@ add_new_target">
 
 .p_target {
   margin-top: 10px;
+  font-weight: 500;
 }
 
 .check_cont {
@@ -149,4 +165,14 @@ add_new_target">
   background-color: rgb(238, 54, 54);
   color: white;
   border: 0px;
+}
+
+.active {
+  text-decoration: line-through;
+}
+
+.error_text {
+  color: red;
+  margin-left: 20px;
+  font-size: 20px;
 }
