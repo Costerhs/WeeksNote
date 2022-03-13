@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { NavLink, useMatch } from 'react-router-dom';
@@ -11,6 +11,7 @@ const Target = () => {
   const namead = add.params.name;
   const fetch = useSelector((state) => state.target.fetch);
   const name = useSelector((state) => state.target.items);
+
   //dispatch
   const dispatch = useDispatch();
   const addNewTarget = () => {
@@ -26,6 +27,8 @@ const Target = () => {
   const func = () => {
     dispatch(setProcent(namead));
   };
+
+  <p className="error_text">Превышен лимит задач!Не перетруждайтесь</p>;
   const tgs = name[namead].map((obj, index) => {
     return (
       <TargetsItems
@@ -35,7 +38,7 @@ const Target = () => {
         name={obj.name}
         key={index}
         id={namead}
-        child={index}
+        child={obj.id}
       />
     );
   });

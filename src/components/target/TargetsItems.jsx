@@ -46,7 +46,7 @@ const TargetsItems = ({ name, id, child, checks, onToggle, onDelete }) => {
           <div className="check_cont">
             <div className="check_false">
               <button onClick={deleteTarget} className="btn_delete">
-                Удалить
+                x
               </button>
             </div>
             <div className="check_true">

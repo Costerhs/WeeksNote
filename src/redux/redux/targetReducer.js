@@ -10,31 +10,31 @@ const initialize = {
   items: [
     [
       { name: 'Задача', flag: false, id: 0 },
-      { name: 'Задача', flag: false, id: 0 },
+      { name: 'Задача', flag: false, id: 1 },
     ],
     [
       { name: 'Задача', flag: false, id: 0 },
-      { name: 'Задача', flag: false, id: 0 },
+      { name: 'Задача', flag: false, id: 1 },
     ],
     [
       { name: 'Задача', flag: false, id: 0 },
-      { name: 'Задача', flag: false, id: 0 },
+      { name: 'Задача', flag: false, id: 1 },
     ],
     [
       { name: 'Задача', flag: false, id: 0 },
-      { name: 'Задача', flag: false, id: 0 },
+      { name: 'Задача', flag: false, id: 1 },
     ],
     [
       { name: 'Задача', flag: false, id: 0 },
-      { name: 'Задача', flag: false, id: 0 },
+      { name: 'Задача', flag: false, id: 1 },
     ],
     [
       { name: 'Задача', flag: false, id: 0 },
-      { name: 'Задача', flag: false, id: 0 },
+      { name: 'Задача', flag: false, id: 1 },
     ],
     [
       { name: 'Задача', flag: false, id: 0 },
-      { name: 'Задача', flag: false, id: 0 },
+      { name: 'Задача', flag: false, id: 1 },
     ],
   ],
   days: [
@@ -72,7 +72,7 @@ const targetReducer = (state = initialize, action) => {
     case ADD_TARGET:
       let lengthTarget = state.items[action.id].length;
 
-      if (lengthTarget >= 6) {
+      if (lengthTarget >= 9) {
         return {
           ...state,
           fetch: true,
@@ -93,7 +93,8 @@ const targetReducer = (state = initialize, action) => {
 
     case DELETE_TARGET:
       return produce(state, (draft) => {
-        draft.items[action.id].splice(action.child, action.child + 1);
+        const obj = draft.items[action.id].filter((elem) => elem.id != action.child);
+        draft.items[action.id] = obj;
       });
 
     case SET_COUNT:
@@ -114,7 +115,7 @@ const targetReducer = (state = initialize, action) => {
           lengthOb += 1;
         }
       });
-      res = (320 / 100) * Math.trunc(num / (lengthOb / 100));
+      res = (420 / 100) * Math.trunc(num / (lengthOb / 100));
       return produce(state, (draft) => {
         draft.days[action.id].procent = res;
       });
